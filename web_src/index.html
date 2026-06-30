@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theo Dõi Khoản Nợ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="app-logo">
+        <div class="logo-icon">💳</div>
+        <div>
+          <div class="app-name">DebtTracker</div>
+          <div class="app-sub">v1.0 · READ-ONLY</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <div class="nav-tab active" onclick="switchPage('overview', this)">
+        <span class="tab-icon">📊</span>
+        <span>Tổng quan</span>
+      </div>
+      <div class="nav-tab" onclick="switchPage('history', this)">
+        <span class="tab-icon">🕐</span>
+        <span>Lịch sử biến động</span>
+        <span class="tab-badge" id="badge-count">—</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="last-update">
+        <div class="dot-live"></div>
+        <span id="footer-update">Đang tải...</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="main">
+
+    <!-- TỔNG QUAN -->
+    <div class="page active" id="page-overview">
+
+      <div class="page-header">
+        <div class="page-eyebrow">TỔNG QUAN</div>
+        <div class="page-title">Chi tiết khoản nợ</div>
+      </div>
+
+      <!-- Ring + Stats -->
+      <div class="overview-top">
+
+        <div class="ring-card">
+          <div class="ring-label">ĐÃ THANH TOÁN</div>
+          <div class="ring-wrap">
+            <svg class="ring-svg" width="140" height="140" viewBox="0 0 140 140">
+              <defs>
+                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#7c5cfc"/>
+                  <stop offset="100%" stop-color="#22d3a4"/>
+                </linearGradient>
+              </defs>
+              <circle class="ring-track"    cx="70" cy="70" r="55"/>
+              <circle class="ring-progress" cx="70" cy="70" r="55" id="ring-progress"
+                      stroke-dasharray="345.4" stroke-dashoffset="345.4"/>
+            </svg>
+            <div class="ring-center">
+              <div class="ring-pct" id="ring-pct">—</div>
+              <div class="ring-pct-label">đã trả</div>
+            </div>
+          </div>
+          <div class="ring-meta">
+            <div class="ring-meta-val" id="ring-paid">—</div>
+            <div class="ring-meta-sub">/ tổng nợ ban đầu</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card c-goc">
+            <div class="stat-header">
+              <span class="stat-label">TIỀN GỐC</span>
+              <span class="stat-icon">🏦</span>
+            </div>
+            <div class="stat-value" id="s-goc">—</div>
+            <div class="stat-sub">Số tiền gốc còn lại</div>
+          </div>
+          <div class="stat-card c-lai">
+            <div class="stat-header">
+              <span class="stat-label">TIỀN LÃI</span>
+              <span class="stat-icon">📈</span>
+            </div>
+            <div class="stat-value v-lai" id="s-lai">—</div>
+            <div class="stat-sub">Lãi phát sinh hiện tại</div>
+          </div>
+          <div class="stat-card c-tong">
+            <div class="stat-header">
+              <span class="stat-label">TỔNG NỢ</span>
+              <span class="stat-icon">⚖️</span>
+            </div>
+            <div class="stat-value v-tong" id="s-tong">—</div>
+            <div class="stat-sub">Gốc + lãi cần trả</div>
+          </div>
+          <div class="stat-card c-datra">
+            <div class="stat-header">
+              <span class="stat-label">ĐÃ THANH TOÁN</span>
+              <span class="stat-icon">✅</span>
+            </div>
+            <div class="stat-value v-datra" id="s-datra">—</div>
+            <div class="stat-sub">Tổng đã trả vào gốc</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Info detail -->
+      <div class="info-card">
+        <div class="info-card-title">Thông tin chi tiết</div>
+        <div class="info-rows">
+          <div class="info-row">
+            <div class="info-key">📅 Cập nhật lần cuối</div>
+            <div class="info-val highlight" id="d-thang">—</div>
+          </div>
+          <div class="info-row">
+            <div class="info-key">🕐 Số lần biến động</div>
+            <div class="info-val" id="d-sl">—</div>
+          </div>
+          <div class="info-row">
+            <div class="info-key">💸 Số lần thanh toán</div>
+            <div class="info-val" id="d-thanhtoan">—</div>
+          </div>
+          <div class="info-row">
+            <div class="info-key">📊 Tỷ lệ lãi / gốc</div>
+            <div class="info-val" id="d-tyle">—</div>
+          </div>
+          <div class="info-row">
+            <div class="info-key">⚠️ Trạng thái</div>
+            <div class="info-val" id="d-trangthai">—</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LỊCH SỬ -->
+    <div class="page" id="page-history">
+
+      <div class="page-header">
+        <div class="page-eyebrow">LỊCH SỬ</div>
+        <div class="page-title">Biến động &amp; Thanh toán</div>
+      </div>
+
+      <div class="history-meta" id="history-meta-chips"></div>
+
+      <div class="timeline" id="timeline"></div>
+
+    </div>
+
+  </main>
+</div>
+
+<script src="scrpit.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+    "tien_goc": 12050000.0,
+    "tien_lai": 371250.0,
+    "lich_su": [
+        {
+            "thoi_gian": "04/05/2026 23:35:48",
+            "hanh_dong": "Khởi tạo hệ thống theo dõi nợ",
+            "so_tien": 0,
+            "goc_hien_tai": 14050000,
+            "lai_hien_tai": 301000
+        },
+        {
+            "thoi_gian": "30/06/2026 15:59:39",
+            "hanh_dong": "Hệ thống tự động cộng tiền lãi cho 1 tháng",
+            "so_tien": 70250.0,
+            "goc_hien_tai": 14050000,
+            "lai_hien_tai": 371250.0
+        },
+        {
+            "thoi_gian": "30/06/2026 16:06:08",
+            "hanh_dong": "Thanh toán trừ vào TIỀN GỐC",
+            "so_tien": 2000000.0,
+            "goc_hien_tai": 12050000.0,
+            "lai_hien_tai": 371250.0
+        }
+    ],
+    "thang_cap_nhat_cuoi": "2026-06"
+}
