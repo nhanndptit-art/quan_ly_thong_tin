@@ -160,7 +160,11 @@ function showError(msg) {
 
 // ── BOOTSTRAP ────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('./data_no.json')
+  // Thêm ?t=<timestamp> vào URL để bypass cache của browser,
+  // đảm bảo luôn lấy data_no.json mới nhất sau mỗi lần push lên GitHub.
+  const url = `./data_no.json?t=${Date.now()}`;
+
+  fetch(url)
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status} – không tìm thấy data_no.json`);
       return res.json();
