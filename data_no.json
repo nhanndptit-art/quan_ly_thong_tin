@@ -1,6 +1,6 @@
 {
     "tien_goc": 12050000.0,
-    "tien_lai": 371250.0,
+    "tien_lai": 431500.0,
     "lich_su": [
         {
             "thoi_gian": "04/05/2026 23:35:48",
@@ -22,7 +22,14 @@
             "so_tien": 2000000.0,
             "goc_hien_tai": 12050000.0,
             "lai_hien_tai": 371250.0
+        },
+        {
+            "thoi_gian": "01/07/2026 05:51:24",
+            "hanh_dong": "Hệ thống tự động cộng tiền lãi cho 1 tháng",
+            "so_tien": 60250.0,
+            "goc_hien_tai": 12050000.0,
+            "lai_hien_tai": 431500.0
         }
     ],
-    "thang_cap_nhat_cuoi": "2026-06"
+    "thang_cap_nhat_cuoi": "2026-07"
 }
